@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search for a Value</title>
+  
+</head>
+<body>
+  <div class="container">
+    <h2>Activity 2: Search for a Value</h2>
+    
+    <label for="arrayInput">Enter numbers :</label>
+    <input type="text" id="arrayInput" value="5, 10, 20, 40, 30">
+    <br><br>
+    <label for="searchInput">Enter value to search:</label>
+    <input type="number" id="searchInput"  placeholder="">
+    
+    <button onclick="searchValue()">Search Value</button>
+    
+    <div id="result" class="output"></div>
+  </div>
+
+  <script>
+    function searchValue() {
+     
+      let rawArr = document.getElementById("arrayInput").value.split(",");
+      let target = Number(document.getElementById("searchInput").value);
+      let resultDiv = document.getElementById("result");
+      
+      let arr = [];
+      for (let i = 0; i < rawArr.length; i++) {
+        arr[i] = Number(rawArr[i].trim());
+      }
+
+      let foundIndex = -1;
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === target) {
+          foundIndex = i;
+          break;
+        }
+      }
+
+      if (foundIndex !== -1) {
+        resultDiv.innerHTML = `<strong>Result:</strong> Value <strong>${target}</strong> found at index <strong>${foundIndex}</strong>.`;
+      } else {
+        resultDiv.innerHTML = `<strong>Result:</strong> Value <strong>${target}</strong> does not exist in the array. `;
+      }
+    }
+  </script>
+</body>
+</html>
