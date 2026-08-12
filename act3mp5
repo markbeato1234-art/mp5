@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+  <title>Activity 3: Sort the Entered Array</title>
+ 
+</head>
+<body>
+  <div class="container">
+    <h2>Activity 3: Sort the Entered Array</h2>
+    
+    <label for="arrayInput">Enter numbers :</label>
+    <input type="text" id="arrayInput" value="40, 10, 25, 5, 15">
+    
+    <button onclick="sortArray()">Sort Array</button>
+    
+    <div id="output"></div>
+  </div>
+
+  <script>
+    function sortArray() {
+      let rawArr = document.getElementById("arrayInput").value.split(",");
+      let arr = [];
+      for (let i = 0; i < rawArr.length; i++) {
+        arr[i] = Number(rawArr[i].trim());
+      }
+
+      let outputHTML = "";
+
+    
+      outputHTML += "<h3>Original Array:</h3><pre>";
+      for (let i = 0; i < arr.length; i++) {
+        outputHTML += `Index ${i}: ${arr[i]}\n`;
+      }
+      outputHTML += "</pre>";
+
+     
+      for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr.length - 1 - i; j++) {
+          if (arr[j] > arr[j + 1]) {
+
+            let temp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+          }
+        }
+      }
+
+      
+      outputHTML += "<h3>Bubble Sort Array:</h3><pre>";
+      for (let i = 0; i < arr.length; i++) {
+        outputHTML += `Index ${i}: ${arr[i]}\n`;
+      }
+      outputHTML += "</pre>";
+
+      document.getElementById("output").innerHTML = outputHTML;
+    }
+  </script>
+</body>
+</html>
